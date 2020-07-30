@@ -1,0 +1,468 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['login'])) {
+    header('Location: login.php');
+    exit();
+}
+
+require 'functions.php';
+$mahasiswa = query('SELECT * FROM mahasiswa');
+
+// tombol cari ditekan
+if (isset($_POST['cari'])) {
+    $mahasiswa = cari($_POST['keyword']);
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+</head>
+
+<body>
+
+    <a href="logout.php">Logout</a>
+    <!-- awal id  -->
+    <div class="card fixed-top bg-light">
+        <div class="row no-gutters nama">
+            <img src="img/photo.png" class="rounded-circle" />
+            <div class="col">
+                <div class="card-body">
+                    <h5 class="card-title">Muhamad Baijuri S.S</h5>
+                    <small class="text-muted">(IV/a) Pembina</small>
+                    <p class="card-text">
+                        Kepala Bagian Kepegawaian
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- akhir id  -->
+
+    <!-- beranda  -->
+    <section id="beranda" class="beranda head">
+        <div class="jumbotron p-2 text-center bg-light menu">Beranda</div>
+        <!-- content  -->
+        <div class="container mb-5">
+            <div class="row">
+                <div class="col-sm mb-5">
+                    <div class="card text-center">
+                        <div class="border-bottom p-2 bg-primary text-light">
+                            Total Saldo Cuti
+                        </div>
+                        <div class="card-body">
+                            <h1>15</h1>
+                            hari
+                        </div>
+                        <div class="card-footer text-muted">
+                            Saldo 2020 :12
+                        </div>
+                        <div class="card-footer text-muted">
+                            Saldo 2019 :3
+                        </div>
+                        <div class="card-footer text-muted">
+                            Saldo 2018 :0
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm mb-5">
+                    <div class="card text-center">
+                        <div class="border-bottom p-2 bg-primary text-light">
+                            Total Akumulasi
+                        </div>
+                        <div class="card-body">
+                            <h1>5</h1>
+                            hari
+                        </div>
+                        <div class="card-footer text-muted">
+                            Jam : 27
+                        </div>
+                        <div class="card-footer text-muted">
+                            Menit : 10
+                        </div>
+                        <div class="card-footer text-muted">
+                            Deti : 2
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm mb-5">
+                    <div class="card text-center">
+                        <div class="border-bottom p-2 bg-primary text-light">
+                            Kehadiran Juli
+                        </div>
+                        <div class="card-body">
+                            <h1>18</h1>
+                            hari
+                        </div>
+                        <div class="card-footer text-muted">
+                            Cuti : 2
+                        </div>
+                        <div class="card-footer text-muted">
+                            Dinas : 0
+                        </div>
+                        <div class="card-footer text-muted">
+                            Sakit : 2
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- akhir content  -->
+    </section>
+    <!-- akhir beranda  -->
+
+    <!-- Hadir  -->
+    <section id="hadir" class="hadir head">
+        <div class="jumbotron p-2 text-center bg-light menu">
+            Hadir (Juli-2020)
+        </div>
+
+        <!-- content  -->
+        <div class="container mb-5">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Tanggal</th>
+                        <th scope="col">Keterangan</th>
+                        <th scope="col">Masuk</th>
+                        <th scope="col">Pulang</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">21-07-2020</th>
+                        <td>Hadir</td>
+                        <td>07:34:23</td>
+                        <td>16:23:12</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="row">
+                <div class="col-sm mb-0">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="m-0">Hadir</h5>
+                                <small>16 Juli 2020</small>
+                            </div>
+                            <p class="m-0">
+                                07:34:00 || 16:12:12
+                            </p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Hadir</h5>
+                                <small>2 hari</small>
+                            </div>
+                            <p class="mb-1">
+                                16 Juli 2020
+                            </p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Cuti Tahunan</h5>
+                                <small>3 hari</small>
+                            </div>
+                            <p class="mb-1">
+                                senin, 12 juni 2020 s/d selasa 18 juni 2020.
+                            </p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Cuti Tahunan</h5>
+                                <small>3 hari</small>
+                            </div>
+                            <p class="mb-1">
+                                senin, 12 juni 2020 s/d selasa 18 juni 2020.
+                            </p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Cuti Tahunan</h5>
+                                <small>5 hari</small>
+                            </div>
+                            <p class="mb-1">
+                                senin, 12 juni 2020 s/d selasa 18 juni 2020.
+                            </p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Cuti Tahunan</h5>
+                                <small>3 hari</small>
+                            </div>
+                            <p class="mb-1">
+                                senin, 12 juni 2020 s/d selasa 18 juni 2020.
+                            </p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Cuti Tahunan</h5>
+                                <small>3 hari</small>
+                            </div>
+                            <p class="mb-1">
+                                senin, 12 juni 2020 s/d selasa 18 juni 2020.
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- akhir content  -->
+    </section>
+    <!-- akhir cuti  -->
+
+    <!-- akumulasi  -->
+    <section id="akumulasi" class="akumulasi head">
+        <div class="jumbotron p-2 text-center bg-light menu">
+            Akumulasi (2020)
+        </div>
+
+        <!-- content  -->
+        <div class="container mb-5">
+            <div class="row">
+                <div class="col-sm mb-5">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">00:03:11</h5>
+                                <small>17 juni 2020</small>
+                            </div>
+                            <p class="mb-1">
+                                Terlambat.
+                            </p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">03:40:23</h5>
+                                <small>12 Januari 2020</small>
+                            </div>
+                            <p class="mb-1">
+                                Terlambat dan Pulang Awal
+                            </p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">03:40:23</h5>
+                                <small>12 Januari 2020</small>
+                            </div>
+                            <p class="mb-1">
+                                Terlambat dan Pulang Awal
+                            </p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">03:40:23</h5>
+                                <small>12 Januari 2020</small>
+                            </div>
+                            <p class="mb-1">
+                                Terlambat dan Pulang Awal
+                            </p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">03:40:23</h5>
+                                <small>12 Januari 2020</small>
+                            </div>
+                            <p class="mb-1">
+                                Terlambat dan Pulang Awal
+                            </p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">03:40:23</h5>
+                                <small>12 Januari 2020</small>
+                            </div>
+                            <p class="mb-1">
+                                Terlambat dan Pulang Awal
+                            </p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">03:40:23</h5>
+                                <small>12 Januari 2020</small>
+                            </div>
+                            <p class="mb-1">
+                                Terlambat dan Pulang Awal
+                            </p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">03:40:23</h5>
+                                <small>12 Januari 2020</small>
+                            </div>
+                            <p class="mb-1">
+                                Terlambat dan Pulang Awal
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- akhir content  -->
+    </section>
+    <!-- akhir akumulasi  -->
+
+    <!-- Cuti  -->
+    <section id="cuti" class="cuti head">
+        <div class="jumbotron p-2 text-center bg-light menu">
+            Cuti (2018-2020)
+        </div>
+
+        <!-- content  -->
+        <div class="container mb-5">
+            <div class="row">
+                <div class="col-sm mb-5">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Cuti Tahunan</h5>
+                                <small>3 hari</small>
+                            </div>
+                            <p class="mb-1">
+                                senin, 12 juni 2020 s/d selasa 18 juni 2020.
+                            </p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Cuti Tahunan</h5>
+                                <small>2 hari</small>
+                            </div>
+                            <p class="mb-1">
+                                senin, 12 juni 2020 s/d selasa 18 juni 2020.
+                            </p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Cuti Tahunan</h5>
+                                <small>3 hari</small>
+                            </div>
+                            <p class="mb-1">
+                                senin, 12 juni 2020 s/d selasa 18 juni 2020.
+                            </p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Cuti Tahunan</h5>
+                                <small>3 hari</small>
+                            </div>
+                            <p class="mb-1">
+                                senin, 12 juni 2020 s/d selasa 18 juni 2020.
+                            </p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Cuti Tahunan</h5>
+                                <small>5 hari</small>
+                            </div>
+                            <p class="mb-1">
+                                senin, 12 juni 2020 s/d selasa 18 juni 2020.
+                            </p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Cuti Tahunan</h5>
+                                <small>3 hari</small>
+                            </div>
+                            <p class="mb-1">
+                                senin, 12 juni 2020 s/d selasa 18 juni 2020.
+                            </p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Cuti Tahunan</h5>
+                                <small>3 hari</small>
+                            </div>
+                            <p class="mb-1">
+                                senin, 12 juni 2020 s/d selasa 18 juni 2020.
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- akhir content  -->
+    </section>
+    <!-- akhir cuti  -->
+
+    <!-- awal menu  -->
+    <nav class="nav nav-pills nav-justified fixed-bottom bg-light">
+        <a class="nav-item nav-link active" href="#">
+            <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-house-door" fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                    d="M7.646 1.146a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5H9.5a.5.5 0 0 1-.5-.5v-4H7v4a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6zM2.5 7.707V14H6v-4a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v4h3.5V7.707L8 2.207l-5.5 5.5z" />
+                <path fill-rule="evenodd" d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+            </svg>
+            <br />
+            Beranda
+        </a>
+
+        <a class="nav-item nav-link" href="#hadir">
+            <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-layout-text-sidebar" fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                    d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                <path fill-rule="evenodd"
+                    d="M11 15V1h1v14h-1zM3 3.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
+            </svg>
+            <br />
+            Kehadiran
+        </a>
+        <a class="nav-item nav-link" href="#akumulasi">
+            <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-clock-history" fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                    d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z" />
+                <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z" />
+                <path fill-rule="evenodd"
+                    d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z" />
+            </svg>
+            <br />
+            Akumulasi
+        </a>
+        <a class="nav-item nav-link" href="#cuti">
+            <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-list-check" fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                    d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z" />
+            </svg>
+            <br />
+            Cuti
+        </a>
+        <a class="nav-item nav-link" href="logout.php">
+            <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-power" fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M5.578 4.437a5 5 0 1 0 4.922.044l.5-.866a6 6 0 1 1-5.908-.053l.486.875z" />
+                <path fill-rule="evenodd" d="M7.5 8V1h1v7h-1z" />
+            </svg>
+            <br />
+            Keluar
+        </a>
+    </nav>
+
+    <!-- akhir menu  -->
+    <!-- </div>  -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/myscript.js"></script>
+</body>
+
+</html>

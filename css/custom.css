@@ -3,9 +3,9 @@
   padding: 0;
 }
 
-.gambar {
+/* .gambar {
   text-align: center;
-}
+} */
 
 .card-body h1 {
   margin: 0;
@@ -13,7 +13,7 @@
 }
 
 .menu {
-  font-size: 25px;
+  font-size: 15px;
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -21,18 +21,24 @@
 .nama {
   box-sizing: border-box;
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
+  height: 30%;
+  align-items: center;
+  justify-content: center;
 }
 
 .nama img {
-  /* float: left; */
-  padding: 10px;
-  margin: 10px;
-  box-sizing: border-box;
-  height: 35%;
+  width: 20%;
   background-color: lightseagreen;
 }
 
-.cnama {
-  background-color: magenta;
+.head {
+  margin-top: 120px;
+}
+.nav-item {
+  font-size: small;
+}
+
+.card-body h5 {
+  padding: 0;
 }
