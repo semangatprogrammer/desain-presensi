@@ -6,3 +6,33 @@
 .gambar {
   text-align: center;
 }
+
+.card-body h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.menu {
+  font-size: 25px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.nama {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.nama img {
+  /* float: left; */
+  padding: 10px;
+  margin: 10px;
+  box-sizing: border-box;
+  height: 35%;
+  background-color: lightseagreen;
+}
+
+.cnama {
+  background-color: magenta;
+}
